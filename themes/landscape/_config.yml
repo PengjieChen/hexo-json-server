@@ -10,16 +10,12 @@ table:
   path: /
   type: sitelink
 -
-  title: GitHub
-  path: /GitHub
+  title: Github
+  path: https://github.com/PengjieChen
   type: permalink
 -
   title: CV
   path: /CV
-  type: sitelink
--
-  title: Contacts
-  path: /Contacts
   type: sitelink
 
 # Content
@@ -53,3 +49,5 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+# With extra Author info
+aboutAU: 'Location in hz, want to be a web frontend developer'
