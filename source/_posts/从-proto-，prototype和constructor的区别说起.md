@@ -3,7 +3,9 @@ title: 从__proto__，prototype和constructor的区别说起
 date: 2017-12-31 23:53:05
 tags:
 ---
-刚开始接触对象时，对于对象的prototype和constructor，以及`__proto__`的概念很难形成一个具体的概念，比较抽象。但是慢慢的各种参考文档看得多了之后，对于这个概念就慢慢的有了一个比较全面的认识。<br>
+刚开始接触对象时，对于对象的prototype和constructor，以及`__proto__`的概念很难形成一个具体的概念，比较抽象。但是慢慢的各种参考文档看得多了之后，对于这个概念就慢慢的有了一个比较全面的认识。
+<!-- more -->
+<br>
 首先，从一段简单代码出发:
 ```javascript
 function FOO() {

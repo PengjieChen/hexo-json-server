@@ -17,6 +17,10 @@ table:
   title: CV
   path: /CV
   type: sitelink
+-
+  title: 404
+  path: /non-exist
+  type: sitelink
 
 # Content
 excerpt_link: Read More
