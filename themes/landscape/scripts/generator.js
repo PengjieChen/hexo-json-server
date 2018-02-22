@@ -140,7 +140,6 @@ module.exports = function (cfg, site) {
     }
 
     if (restful.categories) {
-        // console.log(site.categories.data);
         var cates = cateReduce(site.categories, 'categories');
 
         if (!!cates.length) {
@@ -148,12 +147,16 @@ module.exports = function (cfg, site) {
                 path: 'api/categories.json',
                 data: JSON.stringify(cates.map(catesMap))
             });
-
-            let cattotal = cates.map(catesMap);
-            for (let catitem of cattotal) {
-                console.log(catitem);
-            }
-
+            // /Cats/**.html
+            let cathtmllist = cates.map(function (item) {
+                return {
+                    path: 'Cats/' + item.data.name + '/index.html',
+                    layout:'index',
+                    data: {}
+                };
+            });
+            // console.log(cathtmllist);
+            apiData = apiData.concat(cathtmllist);
             apiData = apiData.concat(cates.map(cateMap));
 
             function getChildrenTree(node, arr) {
@@ -187,8 +190,6 @@ module.exports = function (cfg, site) {
                 path: 'api/tree.json',
                 data: JSON.stringify(totalTree)
             });
-
-            apiData = apiData.concat(totalTree);
         }
 
     }
@@ -250,10 +251,17 @@ module.exports = function (cfg, site) {
             path: 'api/timeline.json',
             data: JSON.stringify(timelineM)
         });
-
-        apiData = apiData.concat(timelineM);
     }
-
+    // html for /Timeline/**
+    for (let year of timelineM) {
+        for (let month of year.postlist) {
+            apiData.push({
+                path: 'Timeline/' + year.year + '/' + month.month + '/index.html',
+                layout:'index',
+                data: {}
+            });
+        }
+    }
     if (restful.posts_size > 0) {
 
         var page_posts = [],
@@ -271,6 +279,12 @@ module.exports = function (cfg, site) {
                     pageCount: pc,
                     data: postlist.slice(i, i + ps)
                 })
+            });
+            // html for /Posts/**
+            apiData.push({
+                path: 'Posts/' + Math.ceil((i + 1) / ps) + '/index.html',
+                layout:'index',
+                data: {}
             });
         }
 
@@ -320,6 +334,7 @@ module.exports = function (cfg, site) {
                 })
             };
         }));
+        // html for /Post/**
         apiData = apiData.concat(posts.map(function (post) {
             var path = '/Post/' + post.slug + '/index.html';
             return {
@@ -350,6 +365,24 @@ module.exports = function (cfg, site) {
             };
         }));
     }
+
+    // html for /CV
+    apiData.push({
+        path: '/CV/index.html',
+        layout:'index',
+        data: {}
+    });
+    // html for 404
+    apiData.push({
+        path: '/non-exist/index.html',
+        layout:'index',
+        data: {}
+    });
+    apiData.push({
+        path: '/404.html',
+        layout:'index',
+        data: {}
+    });
 
     return apiData;
 };
