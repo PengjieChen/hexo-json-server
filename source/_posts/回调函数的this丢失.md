@@ -1,7 +1,14 @@
 ---
 title: 回调函数的this丢失
 date: 2017-12-26 22:57:35
+categories:
+- front-end
+- JS
+- this
 tags:
+- JS
+- this
+- function
 ---
 在学习this的时候有参考《你不知道的JavaScript（上）》中解释this的部分。该书中对于this的指向有这么一条基本准则：
 > 每个函数的this是在调用时被绑定的，完全取决于函数的调用位置（也就是函数的调用方法）。

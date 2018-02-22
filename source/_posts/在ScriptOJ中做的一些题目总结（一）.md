@@ -1,7 +1,12 @@
 ---
 title: 在ScriptOJ中做的一些题目总结（一）
 date: 2018-01-06 23:25:16
+categories:
+- front-end
+- JS
 tags:
+- JS
+- ScriptOJ
 ---
 最近在网上刷题，发现了一个叫ScriptOJ的网站。挑了上面的几个题目做下来发现还是挺有意思的。对做过的几个题目，做了一下笔记：
 <!-- more -->
